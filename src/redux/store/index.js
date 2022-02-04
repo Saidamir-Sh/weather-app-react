@@ -6,7 +6,8 @@ import persistReducer from "redux-persist/es/persistReducer";
 import { locationReducer } from "../reducer";
 
 export const initialState = {
-    location : []
+    location : [],
+    weather: [],
 }
 
 const persistConfig = {
