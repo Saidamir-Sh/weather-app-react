@@ -13,9 +13,20 @@ const MainPage = () => {
 
   const dispatch = useDispatch()
   const state = useSelector((state) => state.location[0])
+
   const latitude = useSelector((state) => state.location[0].lat)
   const longitude = useSelector((state) => state.location[0].lon)
 
+  const temperature = useSelector((state) => state.weather.main.temp)
+  const weather = useSelector((state) => state.weather.weather[0].main)
+  const description = useSelector((state) => state.weather.weather[0].description)
+  const country = useSelector((state) => state.weather.sys.country)
+  const city = useSelector((state) => state.weather.name) 
+  console.log(temperature)
+  console.log(description)
+  console.log(country)
+  console.log(weather)
+  console.log(city)
   const handleInput = (e) => {
     setQuery(e.target.value)
   }
@@ -37,6 +48,8 @@ const MainPage = () => {
           <Form onSubmit={handleSubmit}>
               <Form.Control id='location-input' type="search" value={query}  onChange={handleInput} placeholder="Search and press Enter" />
           </Form>
+        
+          
        </Col>
      </Row>
    </Container>

@@ -6,3 +6,12 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+#location-input {
+    outline: none;
+    border: none;
+    background-color: white;
+}
+#location-input:focus {
+    border: none;
+    outline: none;
+}
