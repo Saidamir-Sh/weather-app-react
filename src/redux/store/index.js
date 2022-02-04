@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import { persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import persistReducer from "redux-persist/es/persistReducer";
+import { locationReducer } from "../reducer";
 
 export const initialState = {
     location : []
@@ -15,7 +16,7 @@ const persistConfig = {
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-const persistedReducer = persistReducer(persistConfig, weatherReducer)
+const persistedReducer = persistReducer(persistConfig, locationReducer)
 
 const configureStore = createStore(
     persistedReducer,
