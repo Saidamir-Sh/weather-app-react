@@ -22,11 +22,8 @@ const MainPage = () => {
   const description = useSelector((state) => state.weather.weather[0].description)
   const country = useSelector((state) => state.weather.sys.country)
   const city = useSelector((state) => state.weather.name) 
-  console.log(temperature)
-  console.log(description)
-  console.log(country)
-  console.log(weather)
-  console.log(city)
+  const iconID = useSelector((state) => state.weather.weather[0].icon)
+ 
   const handleInput = (e) => {
     setQuery(e.target.value)
   }
@@ -34,22 +31,24 @@ const MainPage = () => {
     e.preventDefault()
    await dispatch(fetchLocation(query))
 
-    // setLatitude(state.lat)
-    // setLongitude(state.lon)
-
    await dispatch(fetchWeather(latitude, longitude))
 
   }
   
   return (
    <Container fluid className='main-page'>
-     <Row>
+     <Row className='d-flex flex-column align-items-center justify-content-center py-5'>
        <Col md={5} className='mx-auto mt-4'>
           <Form onSubmit={handleSubmit}>
               <Form.Control id='location-input' type="search" value={query}  onChange={handleInput} placeholder="Search and press Enter" />
           </Form>
-        
-          
+       </Col>
+       <Col md={6} className='mx-auto d-flex align-items-center flex-column my-5'>
+            <h2 className='city'>{city}, {country}</h2>
+            <h1 className='temperature'>{temperature} K</h1>
+            <img  src={`https://openweathermap.org/img/wn/${iconID}@4x.png`} alt='weather icon' />
+            <h3 className='weather'>{weather}</h3>
+            <p className='description'>{description}</p>       
        </Col>
      </Row>
    </Container>

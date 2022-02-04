@@ -1,7 +1,7 @@
 .main-page {
     width: 100%;
     height: 100vh;
-    background-image: url('../assets/background.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url('../assets/background.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -14,4 +14,14 @@
 #location-input:focus {
     border: none;
     outline: none;
+}
+.city, .temperature, .weather, .description {
+    color: white;
+    font-weight: 600;
+}
+.city {
+    font-size: 3rem;
+}
+.description {
+    text-transform: capitalize;
 }
