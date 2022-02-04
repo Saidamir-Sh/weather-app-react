@@ -43,7 +43,7 @@ const MainPage = () => {
               <Form.Control id='location-input' type="search" value={query}  onChange={handleInput} placeholder="Search and press Enter" />
           </Form>
        </Col>
-       <Col md={6} className='mx-auto d-flex align-items-center flex-column my-5'>
+       <Col md={6} className='mx-auto  d-flex align-items-center flex-column my-5'>
             <h2 className='city'>{city}, {country}</h2>
             <h1 className='temperature'>{temperature} K</h1>
             <img  src={`https://openweathermap.org/img/wn/${iconID}@4x.png`} alt='weather icon' />
