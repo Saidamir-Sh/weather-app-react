@@ -5,10 +5,7 @@ import storage from "redux-persist/lib/storage";
 import persistReducer from "redux-persist/es/persistReducer";
 
 export const initialState = {
-    location : {
-        longitude: 0,
-        latitude: 0
-    }
+    location : []
 }
 
 const persistConfig = {
