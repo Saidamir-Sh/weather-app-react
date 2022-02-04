@@ -1,36 +1,41 @@
 import React from 'react';
+import './MainPage.css'
 import { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchLocation } from '../redux/actions';
+import { fetchLocation, fetchWeather } from '../redux/actions';
 
 const MainPage = () => {
   const [query, setQuery] = useState("")
-  const [latitude, setLatitude] = useState(null)
-  const [longitude, setLongitude] = useState(null)
+  // const [latitude, setLatitude] = useState(null)
+  // const [longitude, setLongitude] = useState(null)
 
   const dispatch = useDispatch()
   const state = useSelector((state) => state.location[0])
+  const latitude = useSelector((state) => state.location[0].lat)
+  const longitude = useSelector((state) => state.location[0].lon)
 
   const handleInput = (e) => {
-    console.log(e.target.value)
     setQuery(e.target.value)
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
-    dispatch(fetchLocation(query))
-    setLatitude(state.lat)
-    setLongitude(state.lon)
-    console.log(longitude)
+   await dispatch(fetchLocation(query))
+
+    // setLatitude(state.lat)
+    // setLongitude(state.lon)
+
+   await dispatch(fetchWeather(latitude, longitude))
+
   }
   
   return (
-   <Container>
+   <Container fluid className='main-page'>
      <Row>
-       <Col>
+       <Col md={5} className='mx-auto mt-4'>
           <Form onSubmit={handleSubmit}>
-              <Form.Control type="search" value={query}  onChange={handleInput} placeholder="type and press Enter" />
+              <Form.Control id='location-input' type="search" value={query}  onChange={handleInput} placeholder="Search and press Enter" />
           </Form>
        </Col>
      </Row>
